@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 	Route::get('/', 'HomeController@index')->name('dashboard');
 
 	Route::resource('noticias', 'NoticiaController', ['except' => ['show']]);
-
+	
 });
 
 Route::get('/noticias/{noticia}', 'NoticiaController@show')->name('noticias.show');

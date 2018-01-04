@@ -18,4 +18,10 @@ class Noticia extends Model
     {
     	return $this->belongsTo('App\User', 'usuario_id');
     }
+
+    public function categorias()
+    {
+        return $this->belongsToMany('App\Categoria', 'noticias_categorias', 'noticia_id', 'categoria_id');
+    }
+
 }

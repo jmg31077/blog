@@ -3,3 +3,19 @@
 	margin-top: 50px;
 
 }
+
+span.label-sm {
+  font-size: 12px;
+}
+
+span.label-md {
+  font-size: 16px;
+}
+
+span.label-lg {
+  font-size: 20px;
+}
+
+.select2 {
+	width: 100%;
+}
