@@ -14,6 +14,15 @@
 						{!! nl2br($noticia->corpo) !!}
 					@endif
 				</p>
+				<small>
+					<i> Categoria(s): </i>
+					@foreach($noticia->categorias as $categoria)
+						<a href="" class="btn btn-primary btn-xs">
+							{{ $categoria->nome }}
+						</a>
+					@endforeach
+				</small>
+				<hr />
 				<p>
 					<a href="{{ route('noticias.show', $noticia->id) }}" class="btn btn-primary btn-lg">
 						Leia mais

@@ -26,6 +26,10 @@
     <!-- Custom Fonts -->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
+    <!-- Select2 css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -92,6 +96,12 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('js/sb-admin-2.js') }}"></script>
 
+    <!-- Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <script>
+        $('.select2').select2();
+    </script>
 </body>
 
 </html>
