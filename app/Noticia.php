@@ -12,6 +12,8 @@ class Noticia extends Model
     	return [
     		'titulo' => 'required|max:255',
     		'corpo' => 'required',
+            'categorias' => 'required',
+            'imagem' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
     	];
     }
     public function usuario()

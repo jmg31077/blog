@@ -4,7 +4,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			@forelse($noticias as $noticia)
+			<h1>Notícias sobre "{{ $categoria->nome }}"</h1>
+			<hr>
+			@forelse($categoria->noticias->sortByDesc('created_at') as $noticia)
 			<div class="jumbotron">
 				<h2>{{ $noticia->titulo }}</h2>
 				@if(isset($noticia->caminho_de_imagem))
@@ -35,7 +37,7 @@
 				</p>
 			</div>
 			@empty
-				<h1 class="text-center">Não há notícias no momento</h1>
+				<h3 class="text-center">Não há notícia sobre {{ $categoria->nome }}</h3>
 			@endforelse
 		</div>
 	</div>

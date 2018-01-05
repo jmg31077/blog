@@ -23,29 +23,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 	Route::resource('noticias', 'NoticiaController', ['except' => ['show']]);
 
-	Route::get('categorias', function(){
-		$categorias = App\Categoria::all();
-
-		return view('categorias.index', compact('categorias'));
-	});
-
-	Route::get('categorias/create', function(){
-		return view('categorias.create');
-	});
-
-	Route::get('categorias/{categoria}/edit', function($id){
-		$categoria = App\Categoria::findOrFail($id);
-
-		return view('categorias.edit', compact('categoria'));
-	});
-
-	Route::get('categorias/{categoria}', function($id){
-		$categoria = App\Categoria::findOrFail($id);
-
-		return view('categorias.show', compact('categoria'));
-	});
+	Route::resource('categorias', 'CategoriaController');
 	
 });
 
 Route::get('/noticias/{noticia}', 'NoticiaController@show')->name('noticias.show');
 
+Route::get('categorias/{categoria}/related_news', 'CategoriaController@getRelatedNews')->name('categorias.related_news');

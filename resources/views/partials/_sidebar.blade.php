@@ -20,47 +20,29 @@
             </li>
             <li>
                 <a href="#">
-                    Noticias<span class="fa arrow"></span>
+                   <i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias<span class="fa arrow"></span>
                 </a>
                 
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{ route('noticias.index') }}">Todas</a>
+                        <a href="{{ route('noticias.index') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> Todas</a>
                     </li>
                     <li>
-                        <a href="{{ route('noticias.create') }}">Criar</a>
+                        <a href="{{ route('noticias.create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Criar</a>
                     </li>
                 </ul>
             </li>
             <li>
                 <a href="#">
-                    <i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span>
+                    <i class="fa fa-tag" aria-hidden="true"></i> Categorias<span class="fa arrow"></span>
                 </a>
                 
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Second Level Item</a>
+                        <a href="{{ route('categorias.index') }}"><i class="fa fa-tags" aria-hidden="true"></i> Todas</a>
                     </li>
                     <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Third Level <span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-third-level -->
+                        <a href="{{ route('categorias.create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Criar</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

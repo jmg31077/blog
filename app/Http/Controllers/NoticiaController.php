@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Noticia;
+use App\Categoria;
 use Auth;
 use Session;
 
@@ -28,7 +29,9 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-        return view('noticias.create');
+        $categorias = Categoria::all();
+
+        return view('noticias.create', compact('categorias'));
     }
 
     /**
@@ -47,7 +50,18 @@ class NoticiaController extends Controller
         $noticia->titulo = $request->titulo;
         $noticia->corpo = $request->corpo;
         $noticia->usuario_id = Auth::user()->id;
-        $noticia->save();
+
+        if ($request->hasFile('imagem')) {
+            
+            $imagem_nome = time().'.'.$request->imagem->extension();
+            $request->imagem->move(public_path('uploads'), $imagem_nome);
+            $noticia->caminho_de_imagem = 'uploads/'.$imagem_nome;
+            
+        }
+
+        if($noticia->save()){
+            $noticia->categorias()->attach($request->categorias);
+        }
 
         Session::flash('success', 'Noticia criada com sucesso');
 
@@ -80,7 +94,11 @@ class NoticiaController extends Controller
     {
         $noticia = Noticia::findOrFail($id);
 
-        return view('noticias.edit', compact('noticia'));
+        $categorias = Categoria::all();
+
+        $ids_de_categorias_relacionadas = $noticia->categorias->pluck('id')->toArray();
+
+        return view('noticias.edit', compact('noticia', 'categorias', 'ids_de_categorias_relacionadas'));
     }
 
     /**
@@ -99,6 +117,24 @@ class NoticiaController extends Controller
 
         $noticia->titulo = $request->titulo;
         $noticia->corpo = $request->corpo;
+
+        $noticia->categorias()->sync($request->categorias);
+
+        if ($request->hasFile('imagem')) {
+            
+            $imagem_nome = time().'.'.$request->imagem->extension();
+            $request->imagem->move(public_path('uploads'), $imagem_nome);
+
+            if (isset($noticia->caminho_de_imagem) && file_exists(public_path($noticia->caminho_de_imagem))) {
+
+                unlink(public_path($noticia->caminho_de_imagem));
+                
+            }
+
+            $noticia->caminho_de_imagem = 'uploads/'.$imagem_nome;
+            
+        }
+
         $noticia->save();
 
         Session::flash('success', 'Noticia editada com sucesso');

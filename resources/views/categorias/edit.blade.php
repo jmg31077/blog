@@ -3,7 +3,7 @@
 @section('page-title', 'Editar categoria')
 
 @section('content')
-<form action="" method="POST">
+<form action="{{ route('categorias.update', $categoria->id) }}" method="POST">
 	{{ csrf_field() }}
 	{{ method_field('PUT') }}
 

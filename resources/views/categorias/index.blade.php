@@ -12,10 +12,10 @@
 		<tr>
 			<td>{{ $categoria->nome }}</td>
 			<td>
-				<a href="" class="btn btn-default btn-xs">
+				<a href="{{ route('categorias.show', $categoria->id) }}" class="btn btn-default btn-xs">
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</a>
-				<a href="" class="btn btn-success btn-xs">
+				<a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-success btn-xs">
 					<i class="fa fa-pencil" aria-hidden="true"></i>
 				</a>
 				<button type="submit" class="btn btn-danger btn-xs" form="categoria-destroy{{$categoria->id}}">
@@ -24,7 +24,7 @@
 			</td>
 		</tr>
 
-		<form action="" method="POST" id="categoria-destroy{{$categoria->id}}">
+		<form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" id="categoria-destroy{{$categoria->id}}">
 			{{ csrf_field() }}
 			{{ method_field('DELETE') }}
 		</form>

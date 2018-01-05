@@ -3,7 +3,7 @@
 @section('page-title', 'Criar categoria')
 
 @section('content')
-<form action="" method="POST">
+<form action="{{ route('categorias.store') }}" method="POST">
 	{{ csrf_field() }}
 
 	<div class="form-group">
