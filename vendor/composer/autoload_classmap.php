@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddCaminhoDeImagemEmNoticias' => $baseDir . '/database/migrations/2018_01_04_201010_add_caminho_de_imagem_em_noticias.php',
     'CreateCategoriasTable' => $baseDir . '/database/migrations/2018_01_02_062952_create_categorias_table.php',
     'CreateNoticiasCategoriasTable' => $baseDir . '/database/migrations/2018_01_02_063405_create_noticias_categorias_table.php',
     'CreateNoticiasTable' => $baseDir . '/database/migrations/2017_12_29_040902_create_noticias_table.php',

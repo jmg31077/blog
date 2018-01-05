@@ -275,6 +275,7 @@ class ComposerStaticInitdbfadb393acaaa6f3741802490f04b6e
     );
 
     public static $classMap = array (
+        'AddCaminhoDeImagemEmNoticias' => __DIR__ . '/../..' . '/database/migrations/2018_01_04_201010_add_caminho_de_imagem_em_noticias.php',
         'CreateCategoriasTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_02_062952_create_categorias_table.php',
         'CreateNoticiasCategoriasTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_02_063405_create_noticias_categorias_table.php',
         'CreateNoticiasTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_29_040902_create_noticias_table.php',

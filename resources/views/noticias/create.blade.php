@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('noticias.store') }}" method="POST">
+<form action="{{ route('noticias.store') }}" method="POST" enctype="multipart/form-data">
 	{{ csrf_field() }}
 
 	<div class="form-group">
@@ -16,13 +16,18 @@
 		<label for="corpo">Corpo:</label>
 		<textarea name="corpo" cols="30" rows="10" class="form-control">{{ old('corpo') }}</textarea>
 	</div>
+
+	<div class="form-group">
+		<label for="imagem">Imagem:</label>
+		<input type="file" name="imagem" class="form-control">
+	</div>
     
     <div class="form-group">
     	<label for="categorias">Categoria(s):</label>
     	<select name="categorias[]" class="select2" style="width:100%;" multiple>
-    		<option value="exemplo1">Exemplo 1</option>
-    		<option value="exemplo2">Exemplo 2</option>
-    		<option value="exemplo3">Exemplo 3</option>
+    		@foreach($categorias as $categoria)
+    			<option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+    		@endforeach
     	</select>
     </div>
 	<hr>
