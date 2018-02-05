@@ -47,6 +47,12 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+            <li>
+                <a href="{{ route('usuarios.index') }}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    Usuarios
+                </a>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

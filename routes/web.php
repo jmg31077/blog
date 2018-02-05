@@ -24,6 +24,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 	Route::resource('noticias', 'NoticiaController', ['except' => ['show']]);
 
 	Route::resource('categorias', 'CategoriaController');
+
+	Route::resource('usuarios', 'UsuarioController', ['except' => ['create', 'store', 'show']]);
 	
 });
 

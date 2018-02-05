@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Validation\Rule;
 
 class User extends Authenticatable
 {
@@ -26,4 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function rulesForUpate()
+    {
+        return [
+            'nome' => 'required|max:255',
+            'email' => [Rule::unique('users', 'email')->ignore($this->id), 'email', 'required', 'max:255']
+        ];
+    }
 }
