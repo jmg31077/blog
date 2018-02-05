@@ -69,4 +69,11 @@ class UsuarioController extends Controller
 
         return redirect()->route('usuarios.index');
     }
+
+    public function getNews($id)
+    {
+        $usuario = User::findOrFail($id);
+
+        return view('usuarios.news', compact('usuario'));
+    }
 }

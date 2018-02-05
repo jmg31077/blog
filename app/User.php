@@ -35,4 +35,10 @@ class User extends Authenticatable
             'email' => [Rule::unique('users', 'email')->ignore($this->id), 'email', 'required', 'max:255']
         ];
     }
+
+    public function noticias()
+    {
+        return $this->hasMany('App\Noticia', 'usuario_id');
+    }
+    
 }
