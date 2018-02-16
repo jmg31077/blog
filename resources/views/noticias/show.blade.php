@@ -5,7 +5,10 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="well well-lg">
-				<h1>{{ $noticia->titulo }}</h1>
+				<h1>
+					{{ $noticia->titulo }}
+					<a href="" class="btn btn-primary btn-sm">imprimir</a>
+				</h1>
 				@if(isset($noticia->caminho_de_imagem))
 					<p>
 						<img src="{{asset($noticia->caminho_de_imagem)}}" class="img-responsive">

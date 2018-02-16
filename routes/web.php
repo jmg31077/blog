@@ -22,6 +22,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 	Route::get('/', 'HomeController@index')->name('dashboard');
 
 	Route::resource('noticias', 'NoticiaController', ['except' => ['show']]);
+	Route::get('noticias/{noticia}/pdf', 'NoticiaController@pdfGenerate')->name('noticias.pdf');
 
 	Route::resource('categorias', 'CategoriaController');
 

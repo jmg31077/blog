@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Noticia;
 use App\Categoria;
 use Auth;
+use PDF;
 use Session;
 
 class NoticiaController extends Controller
@@ -168,5 +169,14 @@ class NoticiaController extends Controller
 
         return view('index', compact('noticias'));
 
+    }
+
+    public function pdfGenerate($id)
+    {
+        $noticia = Noticia::findOrFail($id);
+
+        $pdf = PDF::loadView('noticias.pdf', compact('noticia'));
+
+        return $pdf->inline();
     }
 }
