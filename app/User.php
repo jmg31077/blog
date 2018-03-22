@@ -45,5 +45,23 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Funcao', 'usuarios_funcoes', 'usuario_id', 'funcao_id');
     }
+
+    public function temPermissao($permissao)
+    {
+        return $this->temAlgumaFuncao($permissao->funcoes);
+    }
+
+    public function temAlgumaFuncao($funcoes)
+    {
+        if (is_array($funcoes) || is_object($funcoes)) {
+            if ($funcoes->intersect($this->funcoes)->count() > 0) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        return $this->funcoes->contains('nome', $funcoes);
+    }
     
 }

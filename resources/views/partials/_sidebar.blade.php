@@ -18,20 +18,24 @@
                     Dashboard
                 </a>
             </li>
-            <li>
-                <a href="#">
-                   <i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias<span class="fa arrow"></span>
-                </a>
-                
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{ route('noticias.index') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> Todas</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('noticias.create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Criar</a>
-                    </li>
-                </ul>
-            </li>
+            @can('ver_noticia')
+                <li>
+                    <a href="#">
+                       <i class="fa fa-newspaper-o" aria-hidden="true"></i> Noticias<span class="fa arrow"></span>
+                    </a>
+                    
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ route('noticias.index') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> Todas</a>
+                        </li>
+                        @can('criar_noticia')
+                            <li>
+                                <a href="{{ route('noticias.create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Criar</a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
             <li>
                 <a href="#">
                     <i class="fa fa-tag" aria-hidden="true"></i> Categorias<span class="fa arrow"></span>

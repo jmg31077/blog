@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">ACESSO NEGADO</div>
+                <div class="title">acesso negado</div>
             </div>
         </div>
     </body>

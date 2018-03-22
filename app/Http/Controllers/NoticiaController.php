@@ -30,6 +30,7 @@ class NoticiaController extends Controller
      */
     public function create()
     {
+        $this->authorize('criar_noticia');  
         $categorias = Categoria::all();
 
         return view('noticias.create', compact('categorias'));
@@ -44,6 +45,7 @@ class NoticiaController extends Controller
     public function store(Request $request)
     {
         
+        $this->authorize('criar_noticia');
         $noticia = new Noticia;
 
         $this->validate($request, $noticia->rules());
@@ -79,6 +81,7 @@ class NoticiaController extends Controller
     public function show($id)
     {
         
+        $this->authorize('ver_noticia');
         $noticia = Noticia::findOrFail($id);
 
         return view('noticias.show', compact('noticia'));
@@ -93,9 +96,10 @@ class NoticiaController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('editar_noticia');
         $noticia = Noticia::findOrFail($id);
 
-        $categorias = Categoria::all();
+        $categorias = Categoria::all(); 
 
         $ids_de_categorias_relacionadas = $noticia->categorias->pluck('id')->toArray();
 
